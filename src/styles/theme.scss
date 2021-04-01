@@ -1,0 +1,57 @@
+@import "./assets/base/breakpoints.scss";
+@import "./assets/base/colors.scss";
+
+@import "./assets/display/display";
+@import "./assets/size/size";
+@import "./assets/spacing/spacing";
+@import "./assets/text/text";
+
+html,
+body {
+    min-height: 100%;
+    background-color: var(--color-background);
+    overflow: hidden !important;
+}
+
+.container {
+    height: calc(100vh - 64px);
+}
+
+.main-content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 8px 16px;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+// Medias
+@media (min-width: $xs-breakpoint) {
+    .MuiContainer-fixed {
+        max-width: $xs-breakpoint !important;
+    }
+}
+@media (min-width: $sm-breakpoint) {
+    .MuiContainer-fixed {
+        max-width: $sm-breakpoint !important;
+    }
+}
+@media (min-width: $md-breakpoint) {
+    .MuiContainer-fixed {
+        max-width: $md-breakpoint !important;
+    }
+}
+@media (min-width: $lg-breakpoint) {
+    .MuiContainer-fixed {
+        max-width: $lg-breakpoint !important;
+    }
+}
+@media (min-width: $xl-breakpoint) {
+    .MuiContainer-fixed {
+        max-width: $xl-breakpoint !important;
+    }
+}

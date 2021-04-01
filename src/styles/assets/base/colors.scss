@@ -1,0 +1,59 @@
+$color-primary: #58CCBC;
+$color-secondary: #2C5673;
+
+$color-text: #2E3131;
+$color-disabled: #E5E7EB;
+$color-background: #E5E7EB;
+$color-header: $color-secondary;
+
+$color-success: #3CBA92;
+$color-info: #1565C0;
+$color-warning: #F98D21;
+$color-error: #FF4040;
+
+$color-elite: #882DBC;
+$color-legendary: #F1983B;
+$color-mythic: #D83A33;
+$color-ascended: $color-primary;
+
+:root {
+    --color-primary: #{$color-primary};
+    --color-secondary: #{$color-secondary};
+
+    --color-text: #{$color-text};
+    --color-disabled: #{$color-disabled};
+    --color-background: #{$color-background};
+    --color-header: #{$color-header};
+
+    --color-success: #{$color-success};
+    --color-info: #{$color-info};
+    --color-warning: #{$color-warning};
+    --color-error: #{$color-error};
+
+    --color-elite: #{$color-elite};
+    --color-legendary: #{$color-legendary};
+    --color-mythic: #{$color-mythic};
+    --color-ascended: #{$color-ascended};
+}
+
+:export {
+    primary: $color-primary;
+    secondary: $color-secondary;
+
+    text: $color-text;
+    disabled: $color-disabled;
+    background: $color-background;
+
+    success: $color-success;
+    info: $color-info;
+    warning: $color-warning;
+    error: $color-error;
+
+    // Chart
+    chartNone: rgba($color-disabled, 0.8);
+    chartElite: rgba($color-elite, 0.5);
+    chartLegendary: rgba($color-legendary, 0.5);
+    chartMythic: rgba($color-mythic, 0.5);
+    chartAscended: rgba($color-secondary, 0.5);
+    chartAscendedMax: rgba($color-ascended, 0.5);
+}

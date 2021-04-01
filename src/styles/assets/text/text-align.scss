@@ -1,0 +1,32 @@
+.text-align-left { text-align: left; }
+.text-align-center { text-align: center; }
+.text-align-right { text-align: right; }
+.text-align-justify { text-align: justify; }
+
+@media (min-width: $sm-breakpoint) {
+    .sm-text-align-left { text-align: left; }
+    .sm-text-align-center { text-align: center; }
+    .sm-text-align-right { text-align: right; }
+    .sm-text-align-justify { text-align: justify; }
+}
+
+@media (min-width: $md-breakpoint) {
+    .md-text-align-left { text-align: left; }
+    .md-text-align-center { text-align: center; }
+    .md-text-align-right { text-align: right; }
+    .md-text-align-justify { text-align: justify; }
+}
+
+@media (min-width: $lg-breakpoint) {
+    .lg-text-align-left { text-align: left; }
+    .lg-text-align-center { text-align: center; }
+    .lg-text-align-right { text-align: right; }
+    .lg-text-align-justify { text-align: justify; }
+}
+
+@media (min-width: $xl-breakpoint) {
+    .xl-text-align-left { text-align: left; }
+    .xl-text-align-center { text-align: center; }
+    .xl-text-align-right { text-align: right; }
+    .xl-text-align-justify { text-align: justify; }
+}

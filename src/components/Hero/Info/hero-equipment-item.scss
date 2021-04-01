@@ -1,0 +1,70 @@
+.equip-container {
+    position: relative;
+}
+
+.equip-info-container {
+    position: absolute;
+    top: 0;
+    width: 42px;
+    height: 42px;
+    z-index: 99;
+
+    .info-container {
+        width: 75%;
+        height: 100%;
+        float: left;
+        
+        .equip-item-faction {
+            width: 12px;
+            height: 12px;
+            position: absolute;
+
+            -webkit-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.5);
+            -moz-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.5);
+            box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.5);
+        }
+
+        .equip-item-tier {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            font-size: 8px;
+            font-weight: 600;
+
+            border-radius: 0 0 4px 4px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+
+    .star-container {
+        width: 25%;
+        height: 100%;
+        float: right;
+        text-align: right;
+        border-radius: 0 4px 4px 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+.hero-equip-image {
+    width: 42px;
+    height: 42px;
+}
+
+.star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    display: inline-block;
+    height: 7px;
+    width: 7px;
+
+    background-color: white;
+}

@@ -1,0 +1,23 @@
+.transparent-bg {
+    background-color: transparent;
+}
+
+.hero-profile-avatar {
+    width: 64px;
+    height: 64px;
+
+    &.large {
+        width: 84px;
+        height: 84px;       
+    }
+}
+
+.hero-banner-avatar {
+    width: 67px;
+    height: 180px;
+}
+
+.hero-bust-avatar {
+    width: 91px;
+    height: 180px;
+}

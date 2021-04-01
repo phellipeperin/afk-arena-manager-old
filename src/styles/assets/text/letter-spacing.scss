@@ -1,0 +1,37 @@
+.ls-0 { letter-spacing: 0px; }
+.ls-1 { letter-spacing: 1px; }
+.ls-2 { letter-spacing: 2px; }
+.ls-3 { letter-spacing: 3px; }
+.ls-4 { letter-spacing: 4px; }
+
+@media (min-width: $sm-breakpoint) {
+    .sm-ls-0 { letter-spacing: 0px; }
+    .sm-ls-1 { letter-spacing: 1px; }
+    .sm-ls-2 { letter-spacing: 2px; }
+    .sm-ls-3 { letter-spacing: 3px; }
+    .sm-ls-4 { letter-spacing: 4px; }
+}
+
+@media (min-width: $md-breakpoint) {
+    .md-ls-0 { letter-spacing: 0px; }
+    .md-ls-1 { letter-spacing: 1px; }
+    .md-ls-2 { letter-spacing: 2px; }
+    .md-ls-3 { letter-spacing: 3px; }
+    .md-ls-4 { letter-spacing: 4px; }
+}
+
+@media (min-width: $lg-breakpoint) {
+    .lg-ls-0 { letter-spacing: 0px; }
+    .lg-ls-1 { letter-spacing: 1px; }
+    .lg-ls-2 { letter-spacing: 2px; }
+    .lg-ls-3 { letter-spacing: 3px; }
+    .lg-ls-4 { letter-spacing: 4px; }
+}
+
+@media (min-width: $xl-breakpoint) {
+    .xl-ls-0 { letter-spacing: 0px; }
+    .xl-ls-1 { letter-spacing: 1px; }
+    .xl-ls-2 { letter-spacing: 2px; }
+    .xl-ls-3 { letter-spacing: 3px; }
+    .xl-ls-4 { letter-spacing: 4px; }
+}

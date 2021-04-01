@@ -1,0 +1,38 @@
+.hero-signature-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .hero-signature {
+        height: 32px;
+        width: 32px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.elite {
+            color: var(--color-elite);
+            border: 2px solid var(--color-elite);
+        }
+        &.legendary {
+            color: var(--color-legendary);
+            border: 2px solid var(--color-legendary);
+        }
+        &.mythic {
+            color: var(--color-mythic);
+            border: 2px solid var(--color-mythic);
+        }
+        &.ascended {
+            color: white;
+            background-color: var(--color-mythic);
+            border: none;
+        }
+    }
+}

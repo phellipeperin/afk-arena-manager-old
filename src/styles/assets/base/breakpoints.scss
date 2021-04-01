@@ -1,0 +1,13 @@
+$xs-breakpoint: 576px;
+$sm-breakpoint: 768px;
+$md-breakpoint: 992px;
+$lg-breakpoint: 1200px;
+$xl-breakpoint: 1600px;
+
+:export {
+    xs: $xs-breakpoint;
+    sm: $sm-breakpoint;
+    md: $md-breakpoint;
+    lg: $lg-breakpoint;
+    xl: $xl-breakpoint;
+}

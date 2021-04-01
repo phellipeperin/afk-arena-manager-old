@@ -1,0 +1,37 @@
+.w-25 { width: 25%; }
+.w-50 { width: 50%; }
+.w-75 { width: 75%; }
+.w-100 { width: 100%; }
+.w-screen { width: 100vw; }
+
+@media (min-width: $sm-breakpoint) {
+    .sm-w-25 { width: 25%; }
+    .sm-w-50 { width: 50%; }
+    .sm-w-75 { width: 75%; }
+    .sm-w-100 { width: 100%; }
+    .sm-w-screen { width: 100vw; }
+}
+
+@media (min-width: $md-breakpoint) {
+    .md-w-25 { width: 25%; }
+    .md-w-50 { width: 50%; }
+    .md-w-75 { width: 75%; }
+    .md-w-100 { width: 100%; }
+    .md-w-screen { width: 100vw; }
+}
+
+@media (min-width: $lg-breakpoint) {
+    .lg-w-25 { width: 25%; }
+    .lg-w-50 { width: 50%; }
+    .lg-w-75 { width: 75%; }
+    .lg-w-100 { width: 100%; }
+    .lg-w-screen { width: 100vw; }
+}
+
+@media (min-width: $xl-breakpoint) {
+    .xl-w-25 { width: 25%; }
+    .xl-w-50 { width: 50%; }
+    .xl-w-75 { width: 75%; }
+    .xl-w-100 { width: 100%; }
+    .xl-w-screen { width: 100vw; }
+}

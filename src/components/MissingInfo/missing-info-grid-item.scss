@@ -1,0 +1,28 @@
+.missing-info-grid-item {
+    .MuiTabs-fixed {
+        margin-bottom: 12px;
+    }
+
+    .MuiTab-root {
+        min-width: 120px;
+    }
+
+    .MuiTab-wrapper {
+        font-weight: 600;
+    }
+}
+
+.missing-info--subheader {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+}
+
+.missing-info--text {
+    font-size: 14px;
+}
+
+.missing-info--content {
+    font-size: 11px;
+}

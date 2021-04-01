@@ -1,0 +1,32 @@
+.hero-furniture-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .hero-furniture-set {
+        fleX: 1 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .hero-furniture-icon {
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(88, 88, 88, 0.9);
+            background-color: white;
+            transform: rotate(45deg);
+            margin: 2px 0;
+
+            &.acquired {
+                border-color: var(--color-mythic);
+                background-color: var(--color-mythic);
+            }
+        }
+    }
+}
