@@ -1,5 +1,4 @@
 // Dependencies
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 // const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 const path = require('path');
@@ -22,7 +21,9 @@ const scssRule = {
 };
 const imageRule = {
     test: /\.(png|jpg|jpeg|svg|gif)?$/,
-    use: 'file-loader',
+    type: 'asset/resource',
+    // use: 'file-loader',
+    // type: 'javascript/auto',
 };
 
 // Dev Server
@@ -33,7 +34,6 @@ const headers = {
 };
 
 // Plugins
-const ignorePlugin = new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/);
 const htmlPlugin = new HtmlWebPackPlugin({
     title: 'AFK Hero Manager',
     template: './public/index.html',
@@ -46,7 +46,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 module.exports = {
     devtool: 'eval',
     output: {
-        filename: process.env.NODE_ENV === 'production' ? '[name].[contenthash].js' : '[name].[hash].js',
+        filename: '[name].[contenthash].js',
     },
     module: {
         rules: [jsRule, cssRule, scssRule, imageRule],
@@ -57,5 +57,5 @@ module.exports = {
         compress: true,
         headers,
     },
-    plugins: [ignorePlugin, htmlPlugin],
+    plugins: [htmlPlugin],
 };
