@@ -28,10 +28,17 @@ export default function HeroEquipmentItem({ hero = {}, playerInfo = {}, type = '
             {equip.acquired && (
                 <div className='equip-info-container'>
                     <div className='info-container'>
-                        {equip.faction && equip.faction !== 'NONE' && (
+                        {equip.tier !== 3 && equip.faction && equip.faction !== 'NONE' && (
                             <img
                                 src={assetsService.getHeroFaction(equip.faction)}
                                 alt='faction'
+                                className='equip-item-faction'
+                            />
+                        )}
+                        {equip.tier === 3 && (
+                            <img
+                                src={hero.images.profile}
+                                alt='hero'
                                 className='equip-item-faction'
                             />
                         )}
@@ -40,7 +47,7 @@ export default function HeroEquipmentItem({ hero = {}, playerInfo = {}, type = '
                             {equip.tier}
                         </div>
                     </div>
-                    {!!equip.stars && (
+                    {!!equip.stars && equip.tier !== 3 && (
                         <div className='star-container'>
                             {renderStars()}
                         </div>
