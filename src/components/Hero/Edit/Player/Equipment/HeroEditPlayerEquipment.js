@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import heroService from '../../../../../application/services/heroService';
+import playerHeroService from '../../../../../application/services/playerHeroService';
 
 import HeroEditPlayerEquipmentItem from './HeroEditPlayerEquipmentItem';
 
@@ -11,6 +12,9 @@ export default function HeroEditPlayerEquipment({ hero, update }) {
     const updateEquipment = (type, property, newValue) => {
         const newEquips = { ...hero.playerInfo.equipment };
         newEquips[type][property] = newValue;
+        if (!newEquips[type].acquired) {
+            newEquips[type] = playerHeroService.getPlayerHeroEquipmentItemBaseStruct();
+        }
         update(newEquips);
     };
 

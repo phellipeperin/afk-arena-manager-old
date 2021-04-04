@@ -11,6 +11,7 @@ export default function HeroEditPlayerEquipmentItem({ equipment, update, heroTyp
         { value: 0, text: 'T0' },
         { value: 1, text: 'T1' },
         { value: 2, text: 'T2' },
+        // { value: 3, text: 'T3' },
     ];
     const starOptionList = [
         { value: 0, text: 'Base' },
@@ -51,22 +52,6 @@ export default function HeroEditPlayerEquipmentItem({ equipment, update, heroTyp
                     </FormGroup>
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={4}>
-                <FormControl fullWidth>
-                    <InputLabel id='faction'>Faction</InputLabel>
-                    <Select
-                        labelId='faction'
-                        name='faction'
-                        label='Faction'
-                        disabled={!equipment.acquired}
-                        onChange={updateFaction}
-                        value={equipment.faction || 'NONE'}
-                    >
-                        <MenuItem value='NONE'>None</MenuItem>
-                        {factionOptionList.map((elem) => <MenuItem key={elem.value} value={elem.value}>{elem.text}</MenuItem>)}
-                    </Select>
-                </FormControl>
-            </Grid>
             <Grid item xs={12} sm={2}>
                 <FormControl fullWidth>
                     <InputLabel id='tier'>Tier</InputLabel>
@@ -89,11 +74,27 @@ export default function HeroEditPlayerEquipmentItem({ equipment, update, heroTyp
                         labelId='stars'
                         name='start'
                         label='Stars'
-                        disabled={!equipment.acquired}
+                        disabled={!equipment.acquired || equipment.tier === 3}
                         onChange={updateStars}
                         value={equipment.stars}
                     >
                         {starOptionList.map((elem) => <MenuItem key={elem.value} value={elem.value}>{elem.text}</MenuItem>)}
+                    </Select>
+                </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+                <FormControl fullWidth>
+                    <InputLabel id='faction'>Faction</InputLabel>
+                    <Select
+                        labelId='faction'
+                        name='faction'
+                        label='Faction'
+                        disabled={!equipment.acquired || equipment.tier === 3}
+                        onChange={updateFaction}
+                        value={equipment.faction || 'NONE'}
+                    >
+                        <MenuItem value='NONE'>None</MenuItem>
+                        {factionOptionList.map((elem) => <MenuItem key={elem.value} value={elem.value}>{elem.text}</MenuItem>)}
                     </Select>
                 </FormControl>
             </Grid>

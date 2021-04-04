@@ -45,29 +45,38 @@ function formatPlayerHeroData(adminHero, playerHero) {
 }
 
 function getPlayerHeroBaseStruct(heroId) {
-    function getPlayerHeroEquipBaseStruct() { return { acquired: false, stars: 0, tier: 0 }; }
-    function getPlayerHeroFurnitureBaseStruct() { return { acquired: false, plus: 0 }; }
-
     return {
         heroId,
         ascension: 'NONE',
         signatureItem: -1,
         copies: 0,
         priority: 'NORMAL',
-        equipment: {
-            weapon: getPlayerHeroEquipBaseStruct(),
-            head: getPlayerHeroEquipBaseStruct(),
-            body: getPlayerHeroEquipBaseStruct(),
-            feet: getPlayerHeroEquipBaseStruct(),
-        },
-        furniture: {
-            large: [getPlayerHeroFurnitureBaseStruct(), getPlayerHeroFurnitureBaseStruct(), getPlayerHeroFurnitureBaseStruct()],
-            small: [getPlayerHeroFurnitureBaseStruct(), getPlayerHeroFurnitureBaseStruct(), getPlayerHeroFurnitureBaseStruct()],
-            hanging: [getPlayerHeroFurnitureBaseStruct(), getPlayerHeroFurnitureBaseStruct(), getPlayerHeroFurnitureBaseStruct()],
-        },
+        equipment: getPlayerHeroEquipmentBaseStruct(),
+        furniture: getPlayerHeroFurnitureBaseStruct(),
         acquiredSkinList: [],
     };
 }
+
+function getPlayerHeroEquipmentBaseStruct() {
+    return {
+        weapon: getPlayerHeroEquipmentItemBaseStruct(),
+        head: getPlayerHeroEquipmentItemBaseStruct(),
+        body: getPlayerHeroEquipmentItemBaseStruct(),
+        feet: getPlayerHeroEquipmentItemBaseStruct(),
+    };
+}
+
+function getPlayerHeroEquipmentItemBaseStruct() { return { acquired: false, stars: 0, tier: 0 }; }
+
+function getPlayerHeroFurnitureBaseStruct() {
+    return {
+        large: [getPlayerHeroFurnitureItemBaseStruct(), getPlayerHeroFurnitureItemBaseStruct(), getPlayerHeroFurnitureItemBaseStruct()],
+        small: [getPlayerHeroFurnitureItemBaseStruct(), getPlayerHeroFurnitureItemBaseStruct(), getPlayerHeroFurnitureItemBaseStruct()],
+        hanging: [getPlayerHeroFurnitureItemBaseStruct(), getPlayerHeroFurnitureItemBaseStruct(), getPlayerHeroFurnitureItemBaseStruct()],
+    };
+}
+
+function getPlayerHeroFurnitureItemBaseStruct() { return { acquired: false, plus: 0 }; }
 
 function mergeAdminAndPlayerHeroList(adminHeroList, playerHeroList) {
     return adminHeroList.map((adminElem) => {
@@ -97,4 +106,9 @@ export default {
 
         return mergeAdminAndPlayerHeroList(adminHeroList, playerHeroList);
     },
+    getPlayerHeroBaseStruct,
+    getPlayerHeroEquipmentBaseStruct,
+    getPlayerHeroEquipmentItemBaseStruct,
+    getPlayerHeroFurnitureBaseStruct,
+    getPlayerHeroFurnitureItemBaseStruct,
 };

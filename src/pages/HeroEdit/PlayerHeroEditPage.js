@@ -16,6 +16,7 @@ import HeroEditPlayerSkins from '../../components/Hero/Edit/Player/Skins/HeroEdi
 
 import feedbackService from '../../application/services/feedbackService';
 import heroService from '../../application/services/heroService';
+import playerHeroService from '../../application/services/playerHeroService';
 
 import { setPlayerHeroes } from '../../application/store/modules/hero/actions';
 
@@ -36,7 +37,18 @@ export default function PlayerHeroEditPage() {
     }, [user]);
 
     // Update
-    const updateHeroAscension = (event) => { updateHeroPlayerInfo(event.target.value, 'ascension'); };
+    const updateHeroAscension = (event) => {
+        const newHero = { ...hero };
+        newHero.playerInfo.ascension = event.target.value;
+        const minNumberOfCopies = heroService.getNumberOfCopies(newHero.category.faction, newHero.playerInfo.ascension);
+        if (newHero.playerInfo.numberOfCopies < minNumberOfCopies) {
+            newHero.playerInfo.numberOfCopies = minNumberOfCopies;
+        }
+        if (!heroService.isSignatureItemAvailable(newHero.playerInfo.ascension)) {
+            newHero.playerInfo.signatureItem = -1;
+        }
+        setHero(newHero);
+    };
     const updateHeroSignatureItem = (event) => { updateHeroPlayerInfo(event.target.value, 'signatureItem'); };
     const updateHeroCrystal = (event) => { updateHeroPlayerInfo(event.target.checked, 'onCrystal'); };
     const updateHeroNumberOfCopies = (event) => { updateHeroPlayerInfo(event.target.value, 'numberOfCopies'); };
@@ -51,7 +63,12 @@ export default function PlayerHeroEditPage() {
     };
 
     const update = async () => {
-        setPlayerHero(user.uid, id, hero.playerInfo).then(() => {
+        const heroData = { ...hero.playerInfo };
+        if (heroService.isFurnitureAvailable(heroData.ascension)) {
+            heroData.furniture = playerHeroService.getPlayerHeroFurnitureBaseStruct();
+        }
+
+        setPlayerHero(user.uid, id, heroData).then(() => {
             const newPlayerHeroes = playerHeroes[user.uid].filter((elem) => elem.id !== id);
             newPlayerHeroes.push(hero);
             dispatch(setPlayerHeroes(user.uid, newPlayerHeroes));
