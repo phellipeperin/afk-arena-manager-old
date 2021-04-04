@@ -51,7 +51,7 @@ export default function PlayerStatisticsPage() {
             <SubHeader text='Filters' />
             <Filter
                 key={filterKey}
-                onlyMainData
+                disableSort
                 callback={changeFilter}
             />
             <div className='mb-2'>

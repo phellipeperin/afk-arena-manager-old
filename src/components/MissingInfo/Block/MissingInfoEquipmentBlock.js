@@ -27,6 +27,10 @@ export default function MissingInfoEquipmentBlock({ data = [] }) {
                     <b>{data.total.stones.t2}</b>
                     &nbsp;T2 stones missing.
                 </p>
+                <p className='missing-info--text'>
+                    <b>{data.total.stones.t3}</b>
+                    &nbsp;T3 stones missing.
+                </p>
             </Grid>
             <Grid item xs={12}>
                 <p className='missing-info--subheader'>Detailed</p>

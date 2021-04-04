@@ -38,7 +38,6 @@ export default function HeroList({
             <SubHeader text='Filters' />
             <Filter
                 key={filterKey}
-                onlyMainData
                 callback={changeFilter}
             />
 

@@ -11,7 +11,7 @@ export default function HeroEditPlayerEquipmentItem({ equipment, update, heroTyp
         { value: 0, text: 'T0' },
         { value: 1, text: 'T1' },
         { value: 2, text: 'T2' },
-        // { value: 3, text: 'T3' },
+        { value: 3, text: 'T3' },
     ];
     const starOptionList = [
         { value: 0, text: 'Base' },

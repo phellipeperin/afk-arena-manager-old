@@ -15,6 +15,10 @@ export default function HeroEditPlayerEquipment({ hero, update }) {
         if (!newEquips[type].acquired) {
             newEquips[type] = playerHeroService.getPlayerHeroEquipmentItemBaseStruct();
         }
+        if (newEquips[type].tier === 3) {
+            newEquips[type].stars = 5;
+            newEquips[type].faction = hero.category.faction;
+        }
         update(newEquips);
     };
 

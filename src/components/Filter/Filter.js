@@ -5,21 +5,22 @@ import { factionOptionList, typeOptionList, classOptionList, roleOptionList } fr
 
 import FilterSelect from './FilterSelect';
 
-export default function Filter({ onlyMainData = false, callback }) {
-    const colSize = onlyMainData ? { xs: 12, sm: 6, md: 3 } : { xs: 12, sm: 4, md: 2 };
+export default function Filter({ disableSort = false, callback }) {
+    const colSize = { xs: 12, sm: 4, md: 2 };
     const possibleSortOptions = [
-        { id: 'ORDER_ASC', property: 'info.order', reverse: false, label: 'Game Order' },
-        { id: 'NAME_ASC', property: 'info.name', reverse: false, label: 'Name (A-Z)' },
-        { id: 'NAME_DESC', property: 'info.name', reverse: true, label: 'Name (Z-A)' },
-        { id: 'TITLE_ASC', property: 'info.title', reverse: false, label: 'Title (A-Z)' },
-        { id: 'TITLE_DESC', property: 'info.title', reverse: true, label: 'Title (Z-A)' },
-        { id: 'FACTION_ASC', property: 'category.faction', reverse: false, label: 'Faction' },
-        { id: 'TYPE_ASC', property: 'category.type', reverse: false, label: 'Type' },
-        { id: 'CLASS_ASC', property: 'category.class', reverse: false, label: 'Class' },
-        { id: 'ROLE_ASC', property: 'category.role', reverse: false, label: 'Role' },
+        { value: 'ORDER_ASC', property: 'info.order', reverse: false, text: 'Game Order' },
+        { value: 'NAME_ASC', property: 'info.name', reverse: false, text: 'Name (A-Z)' },
+        { value: 'NAME_DESC', property: 'info.name', reverse: true, text: 'Name (Z-A)' },
+        { value: 'TITLE_ASC', property: 'info.title', reverse: false, text: 'Title (A-Z)' },
+        { value: 'TITLE_DESC', property: 'info.title', reverse: true, text: 'Title (Z-A)' },
+        { value: 'FACTION_ASC', property: 'category.faction', reverse: false, text: 'Faction' },
+        { value: 'TYPE_ASC', property: 'category.type', reverse: false, text: 'Type' },
+        { value: 'CLASS_ASC', property: 'category.class', reverse: false, text: 'Class' },
+        { value: 'ROLE_ASC', property: 'category.role', reverse: false, text: 'Role' },
     ];
 
     const [data, setData] = useState({
+        selectedSortValue: '',
         sort: possibleSortOptions[0],
         text: '',
         faction: [],
@@ -32,7 +33,12 @@ export default function Filter({ onlyMainData = false, callback }) {
         const persistentData = window.localStorage.getItem('search');
         if (persistentData) {
             const convertedData = JSON.parse(persistentData);
-            if (!convertedData.sort) [convertedData.sort] = possibleSortOptions;
+            if (!convertedData.sort) {
+                [convertedData.sort] = possibleSortOptions;
+                convertedData.selectedSortValue = convertedData.sort.value;
+            } else {
+                convertedData.selectedSortValue = convertedData.sort.value;
+            }
             if (typeof convertedData.faction === 'string') convertedData.faction = [];
             if (typeof convertedData.type === 'string') convertedData.type = [];
             if (typeof convertedData.class === 'string') convertedData.class = [];
@@ -50,8 +56,8 @@ export default function Filter({ onlyMainData = false, callback }) {
     };
 
     const changeSort = (event) => {
-        const newSort = possibleSortOptions.find((elem) => elem.id === event.target.value);
-        updateData({ ...data, sort: newSort });
+        const newSort = possibleSortOptions.find((elem) => elem.value === event.target.value);
+        updateData({ ...data, selectedSortValue: event.target.value, sort: newSort });
     };
 
     const updateData = (newData) => {
@@ -64,29 +70,26 @@ export default function Filter({ onlyMainData = false, callback }) {
             container
             spacing={2}
         >
-            {!onlyMainData && (
-                <>
-                    <FilterSelect
-                        label='Order By'
-                        property='orderby'
-                        value={data.sort.id}
-                        optionList={possibleSortOptions}
-                        colSize={colSize}
-                        change={changeSort}
-                    />
-                    <Grid item xs={colSize.xs} sm={colSize.sm} md={colSize.md}>
-                        <TextField
-                            fullWidth
-                            variant='outlined'
-                            label='Text'
-                            name='text'
-                            value={data.text}
-                            onChange={change}
-                        />
-                    </Grid>
-                </>
-            )}
             <FilterSelect
+                label='Order By'
+                property='orderby'
+                disabled={disableSort}
+                value={data.selectedSortValue}
+                optionList={possibleSortOptions}
+                colSize={colSize}
+                change={changeSort}
+            />
+            <Grid item xs={colSize.xs} sm={colSize.sm} md={colSize.md}>
+                <TextField
+                    fullWidth
+                    label='Text'
+                    name='text'
+                    value={data.text}
+                    onChange={change}
+                />
+            </Grid>
+            <FilterSelect
+                multiple
                 label='Faction'
                 property='faction'
                 value={data.faction}
@@ -95,6 +98,7 @@ export default function Filter({ onlyMainData = false, callback }) {
                 change={change}
             />
             <FilterSelect
+                multiple
                 label='Type'
                 property='type'
                 value={data.type}
@@ -103,6 +107,7 @@ export default function Filter({ onlyMainData = false, callback }) {
                 change={change}
             />
             <FilterSelect
+                multiple
                 label='Class'
                 property='class'
                 value={data.class}
@@ -111,6 +116,7 @@ export default function Filter({ onlyMainData = false, callback }) {
                 change={change}
             />
             <FilterSelect
+                multiple
                 label='Role'
                 property='role'
                 value={data.role}

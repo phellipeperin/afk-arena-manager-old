@@ -8,16 +8,20 @@ export default function MissingInfoEquipmentBlockDetailedRowItem({ data = [], ty
                 &nbsp;items.
             </p>
             <p className='missing-info--text'>
-                <b>{data.total.stars}</b>
+                <b>{data.types[type][equipType].stars}</b>
                 &nbsp;stars.
             </p>
             <p className='missing-info--text'>
-                <b>{data.total.stones.t1}</b>
+                <b>{data.types[type][equipType].stones.t1}</b>
                 &nbsp;T1 stones.
             </p>
             <p className='missing-info--text'>
-                <b>{data.total.stones.t2}</b>
+                <b>{data.types[type][equipType].stones.t2}</b>
                 &nbsp;T2 stones.
+            </p>
+            <p className='missing-info--text'>
+                <b>{data.types[type][equipType].stones.t3}</b>
+                &nbsp;T3 stones.
             </p>
         </>
     );

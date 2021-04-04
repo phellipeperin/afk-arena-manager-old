@@ -3,7 +3,7 @@ import heroService from './heroService';
 
 const getEquipmentDetailsNeeded = (equipment) => {
     if (!equipment.acquired) {
-        return { amount: 1, stars: 5, stones: { t1: 1, t2: 1 } };
+        return { amount: 1, stars: 5, stones: { t1: 1, t2: 1, t3: 1 } };
     }
     return {
         amount: 0,
@@ -11,6 +11,7 @@ const getEquipmentDetailsNeeded = (equipment) => {
         stones: {
             t1: equipment.tier < 1 ? 1 : 0,
             t2: equipment.tier < 2 ? 1 : 0,
+            t3: equipment.tier < 3 ? 1 : 0,
         },
     };
 };
@@ -43,7 +44,7 @@ const getDefaultMissingEmblemStruct = (key, label, limit, calcOnlyUnlocked) => (
 const getDefaultMissingEquipmentStruct = (key, label) => ({ key, label, data: { total: getDefaultMissingEquipmentTypeItemStruct(), types: { DEX: getDefaultMissingEquipmentTypeStruct(), STR: getDefaultMissingEquipmentTypeStruct(), INT: getDefaultMissingEquipmentTypeStruct() } } });
 const getDefaultMissingFurnitureStruct = (key, label, limit, calcOnlyUnlocked) => ({ key, label, limit, calcOnlyUnlocked, data: { total: 0, large: 0, small: 0, hanging: 0 } });
 const getDefaultMissingEquipmentTypeStruct = () => ({ weapon: getDefaultMissingEquipmentTypeItemStruct(), head: getDefaultMissingEquipmentTypeItemStruct(), body: getDefaultMissingEquipmentTypeItemStruct(), feet: getDefaultMissingEquipmentTypeItemStruct() });
-const getDefaultMissingEquipmentTypeItemStruct = () => ({ amount: 0, stars: 0, stones: { t1: 0, t2: 0 } });
+const getDefaultMissingEquipmentTypeItemStruct = () => ({ amount: 0, stars: 0, stones: { t1: 0, t2: 0, t3: 0 } });
 
 export default {
     getAllMissingInfo(heroList) {
@@ -98,11 +99,13 @@ export default {
                     newEquipmentElem.data.total.stars += missingEquipDetail.stars;
                     newEquipmentElem.data.total.stones.t1 += missingEquipDetail.stones.t1;
                     newEquipmentElem.data.total.stones.t2 += missingEquipDetail.stones.t2;
+                    newEquipmentElem.data.total.stones.t3 += missingEquipDetail.stones.t3;
 
                     newEquipmentElem.data.types[type][equipType].amount += missingEquipDetail.amount;
                     newEquipmentElem.data.types[type][equipType].stars += missingEquipDetail.stars;
                     newEquipmentElem.data.types[type][equipType].stones.t1 += missingEquipDetail.stones.t1;
                     newEquipmentElem.data.types[type][equipType].stones.t2 += missingEquipDetail.stones.t2;
+                    newEquipmentElem.data.types[type][equipType].stones.t3 += missingEquipDetail.stones.t3;
                 });
 
                 return newEquipmentElem;
